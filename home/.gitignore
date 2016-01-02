@@ -1,0 +1,10 @@
+# Global gitignore
+
+# Vim swap files and sessions
+.*.swp
+[Ss]ession.vim
+
+# Python temporary and caching files
+#__pycache__/
+#*.pyc
+#*.pyo
