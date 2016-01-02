@@ -1,0 +1,28 @@
+[user]
+	email = i.am.the.memory@gmail.com
+	name = Alex Corkwell
+	signingkey = 0xD226B54765D868B7
+[core]
+	editor = /usr/bin/vim
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab,tabwidth=8
+	abbrev = 12
+	excludesfile = ~/.gitignore
+[color]
+	ui = true
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = simple
+[merge]
+	tool = vimdiff
+[commit]
+	gpgsign = true
+[alias]
+	logg = log --date-order --all --graph --stat
+	loggs = log --date-order --all --graph --stat --show-signature
+	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+[annex]
+	diskreserve = 1 GiB
+[credential]
+	helper = store
