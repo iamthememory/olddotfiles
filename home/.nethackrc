@@ -1,0 +1,2 @@
+NAME=Memory
+OPTIONS=color, !autopickup, time, standout
