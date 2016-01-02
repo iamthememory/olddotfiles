@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check why we're being run
+case "$1" in
+	rebase) 
+		# Run post-merge hook
+		.git/hooks/post-merge
+		;;
+esac
