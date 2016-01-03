@@ -83,15 +83,11 @@ fi
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # Add any ruby gems to the PATH.
-if [ -d "${HOME}/.gem/ruby" ]
+if command -v ruby >/dev/null 2>&1
 then
-  for gemdir in "${HOME}/.gem/ruby/"*
-  do
-    if [ -d "${gemdir}/bin" ]
-    then
-      export PATH="${gemdir}/bin:${PATH}"
-    fi
-  done
+  export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
+  export GEM_PATH="${GEM_HOME}"
+  export PATH="${GEM_HOME}/bin:${PATH}"
 fi
 
 # Add sbins
