@@ -1,0 +1,20 @@
+# Post installation steps.
+
+require 'mkmf'
+
+# See <https://gist.github.com/mnem/2540fece4ed9d3403b98>.
+# Make the MakeMakefile logger write file output to null.
+# Probably requires ruby >= 1.9.3
+module MakeMakefile::Logging
+  @logfile = File::NULL
+end
+
+zsh = find_executable 'zsh'
+if zsh
+  if find_executable 'chsh'
+    puts "Setting login shell to " + zsh + "..."
+    system 'chsh -s ' + zsh
+  end
+end
+
+# vim: ft=ruby
