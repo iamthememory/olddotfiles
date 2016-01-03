@@ -12,8 +12,11 @@ end
 zsh = find_executable 'zsh'
 if zsh
   if find_executable 'chsh'
-    puts "Setting login shell to " + zsh + "..."
-    system 'chsh -s ' + zsh
+    shell = `getent passwd "$LOGNAME" | cut -d : -f 7`
+    if shell.strip != zsh
+      puts "Setting login shell to " + zsh + "..."
+      system 'chsh -s ' + zsh
+    end
   end
 end
 
