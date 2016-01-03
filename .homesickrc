@@ -9,9 +9,9 @@ module MakeMakefile::Logging
   @logfile = File::NULL
 end
 
-zsh = find_executable 'zsh'
-if zsh
-  if find_executable 'chsh'
+if find_executable 'chsh'
+  zsh = `grep 'zsh$' /etc/shells | head -n 1`.strip
+  if zsh != ""
     shell = `getent passwd "$LOGNAME" | cut -d : -f 7`
     if shell.strip != zsh
       puts "Setting login shell to " + zsh + "..."
