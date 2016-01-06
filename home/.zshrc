@@ -111,20 +111,23 @@ alias ansible-playbook='ansible-playbook --vault-password-file ~/.ansible.vaultp
 alias ansible='ansible --vault-password-file ~/.ansible.vaultpass.sh'
 
 # Use keychain to load ssh and GPG keys.
-(
-  echo ~/.ssh/*id_rsa
-  if command -v gpg >/dev/null 2>&1
-  then
-    gpg --list-secret-keys --with-colons |
-      grep '^sec' |
-      cut -d : -f 5 |
-      sed 's/^.*$/0x&/'
-  fi
-) |
-  xargs keychain --agents ssh,gpg
-[ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
-[ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && source "${HOME}/.keychain/${HOSTNAME}-sh"
-[ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && source "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
+if [ -e "${HOME}/.keychain/load-keychain" ]
+then
+  (
+    echo ~/.ssh/*id_rsa
+    if command -v gpg >/dev/null 2>&1
+    then
+      gpg --list-secret-keys --with-colons |
+        grep '^sec' |
+        cut -d : -f 5 |
+        sed 's/^.*$/0x&/'
+    fi
+  ) |
+    xargs keychain --agents ssh,gpg
+  [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
+  [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && source "${HOME}/.keychain/${HOSTNAME}-sh"
+  [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && source "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
+fi
 
 if [ -d /usr/share/tlpkg ]
 then
