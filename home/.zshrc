@@ -1,4 +1,14 @@
-# Load the Gentoo completion scripts.
+# This file is sourced by zsh only for interactive shells.
+
+
+# The system-wide zsh profile on many systems will overwrite our PATH for login
+# shells.
+# Re-source our local environment just in case.
+# (We don't add duplicates in it anyway.)
+source "${HOME}/.zshenv"
+
+
+# Load the completion scripts.
 autoload -U compinit promptinit
 compinit
 promptinit
@@ -73,26 +83,6 @@ export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 # Proxy git through tor
 export GIT_PROXY_COMMAND="${HOME}/.local/bin/tor-socks-proxy.sh"
 
-# FSlint utilities
-if [ -d "/usr/share/fslint/fslint" ]
-then
-  export PATH="${PATH}:/usr/share/fslint/fslint"
-fi
-
-# Local programs and scripts.
-export PATH="${HOME}/.local/bin:${PATH}"
-
-# Add any ruby gems to the PATH.
-if command -v ruby >/dev/null 2>&1
-then
-  export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
-  export GEM_PATH="${GEM_HOME}"
-  export PATH="${GEM_HOME}/bin:${PATH}"
-fi
-
-# Add sbins
-export PATH="${PATH}:/usr/local/sbin:/usr/sbin:/sbin"
-
 # Add local manpages.
 for mandir in "${HOME}/.local/"{share/,}"man"
 do
@@ -140,7 +130,6 @@ then
 fi
 
 mkdir -p "${HOME}/perl5"
-export PATH="${HOME}/perl5/bin${PATH+:}${PATH}"
 export PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"
 export PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
 export PERL_MB_OPT="--install_base \"${HOME}/perl5\""
