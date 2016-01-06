@@ -132,7 +132,7 @@ if command -v ruby >/dev/null 2>&1
 then
   export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
   export GEM_PATH="${GEM_HOME}"
-  path=("${GEM_HOME}/bin" "$path[@]")
+  path=("$(ruby -e 'print Gem.bindir')" "$path[@]")
 fi
 
 # Local programs and scripts.
