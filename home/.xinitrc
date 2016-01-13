@@ -30,17 +30,6 @@ xinput disable 'pointer:SynPS/2 Synaptics TouchPad'
 # Hide mouse when idle
 unclutter -idle 4 -jitter 5 -noevents -root &
 
-# Run jackd off of pulseaudio (jackd can't handle the speaker/subwoofer as of
-# linux ~3.13).
-#pulseaudio &
-#sleep 3
-#jackd --realtime --nozombies --driver=pulse --rate=96000 --device="hw:0" &
-
-# Start pulseaudio to run off jack. Give it a second to capture the sound card.
-#sleep 3
-#pulseaudio -L module-jack-sink -L module-jack-source &
-pulseaudio -L module-alsa-sink -L module-alsa-source &
-
 # We need a compositing manager for DRI_PRIME=1 to work properly
 # and to fix some video tearing
 # Does this just make it worse?
@@ -73,6 +62,9 @@ whatpulse &
 
 # Set a background
 feh --bg-center --randomize ~/.wallpaper/*
+
+# Start pulseaudio.
+start-pulseaudio-x11 &
 
 # Start i3wm w/consolekit
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session i3
