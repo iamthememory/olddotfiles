@@ -45,12 +45,6 @@ xset dpms 1800 1800 1800
 # Swap caps lock and escape
 xmodmap ~/.speedswapper
 
-# Redshift
-#redshift -v >> ~/.redshift.log &
-
-# IRC notify listener
-notify-listener.py &
-
 # udiskie (udisks2 auto-mounter)
 udiskie -2 -t &
 
