@@ -11,9 +11,9 @@ fi
 # Activate Compose key
 setxkbmap -model evdev -layout us -option compose:lwin
 
-# Use discrete GPU for render offloading and HDMI output
-#xrandr --setprovideroffloadsink radeon Intel
-#xrandr --setprovideroutputsource radeon Intel
+# Set up discrete GPU for render offloading and HDMI output.
+xrandr --setprovideroffloadsink radeon Intel
+xrandr --setprovideroutputsource radeon Intel
 
 # Turn on numlock
 numlockx on
