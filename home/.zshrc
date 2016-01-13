@@ -74,3 +74,9 @@ then
 fi
 
 unsetopt autopushd
+
+# Save pretty much all command history.
+export EXTENDED_HISTORY=1
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export SHARE_HISTORY=1
