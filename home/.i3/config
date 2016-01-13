@@ -201,8 +201,8 @@ bindsym Mod1+i exec "i3-input"
 # Rename the current workspace
 bindsym Mod1+Shift+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-# Reload pulseaudio modules
-bindsym Mod1+Control+Shift+p exec "pacmd unload-module module-alsa-sink; pacmd unload-module module-alsa-source; sleep 0.5; pacmd load-module module-alsa-sink; pacmd load-module module-alsa-source"
+# Open pavucontrol
+bindsym Mod1+Control+Shift+p exec "pavucontrol"
 
 # Take a screenshot of the window
 bindsym Mod1+Shift+s exec "scrot -b -u -e 'pngcrush -brute -l 9 -reduce $f $f.crush.png && mv $f.crush.png $f' $(mktemp /home/iamthememory/tmp/scrot/tmp.XXXX.png)"
