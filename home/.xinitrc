@@ -12,8 +12,8 @@ fi
 setxkbmap -model evdev -layout us -option compose:lwin
 
 # Set up discrete GPU for render offloading and HDMI output.
-xrandr --setprovideroffloadsink radeon Intel
-xrandr --setprovideroutputsource radeon Intel
+#xrandr --setprovideroffloadsink radeon Intel
+#xrandr --setprovideroutputsource radeon Intel
 
 # Turn on numlock
 numlockx on
