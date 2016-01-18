@@ -207,6 +207,9 @@ bindsym Mod1+Control+Shift+p exec "pavucontrol"
 # Open alsamixer in a terminal.
 bindsym Mod1+Control+Shift+a exec "st alsamixer -c 0"
 
+# Open htop in a terminal.
+bindsym Mod1+Control+Shift+h exec "st htop"
+
 # Take a screenshot of the window
 bindsym Mod1+Shift+s exec "scrot -b -u -e 'pngcrush -brute -l 9 -reduce $f $f.crush.png && mv $f.crush.png $f' $(mktemp /home/iamthememory/tmp/scrot/tmp.XXXX.png)"
 
