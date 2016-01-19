@@ -69,5 +69,8 @@ start-pulseaudio-x11 &
 # NetworkManager applet.
 dbus-launch nm-applet &
 
+# Blueman applet.
+blueman-applet &
+
 # Start i3wm w/consolekit
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session i3
