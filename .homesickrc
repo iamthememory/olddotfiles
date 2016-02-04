@@ -2,6 +2,9 @@
 
 require 'mkmf'
 
+require 'rake'
+Object.send(:include, Rake::DSL)
+
 # See <https://gist.github.com/mnem/2540fece4ed9d3403b98>.
 # Make the MakeMakefile logger write file output to null.
 # Probably requires ruby >= 1.9.3
@@ -9,6 +12,7 @@ module MakeMakefile::Logging
   @logfile = File::NULL
 end
 
+# Set default shell to zsh (if possible).
 if find_executable 'chsh'
   zsh = `grep 'zsh$' /etc/shells | head -n 1`.strip
   if zsh != ""
@@ -19,5 +23,11 @@ if find_executable 'chsh'
     end
   end
 end
+
+# Add Vundle.
+unless Dir.exists?(File.expand_path('~/.vim/bundle/Vundle.vim'))
+  sh "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
+end
+sh "vim +PluginInstall +qall"
 
 # vim: ft=ruby
