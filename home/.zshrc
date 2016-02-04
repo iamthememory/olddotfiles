@@ -80,3 +80,9 @@ export EXTENDED_HISTORY=1
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export SHARE_HISTORY=1
+
+# Fortune quote.
+if command -v fortune >/dev/null 2>&1
+then
+  fortune
+fi
