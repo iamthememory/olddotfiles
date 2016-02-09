@@ -36,6 +36,9 @@ if !has('gui_running')
   set background=dark
 endif
 
+" Mark at 80 characters
+set colorcolumn=80
+
 " Show folds on the left.
 set foldcolumn=2
 set foldlevel=2
