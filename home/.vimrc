@@ -21,6 +21,9 @@ Plugin 'tpope/vim-fugitive'
 " Obsession (auto-saving sessions).
 Plugin 'tpope/vim-obsession'
 
+" VST (reStructuredText)
+Plugin 'VST'
+
 
 " All Vundle plugins must be before this line.
 call vundle#end()
