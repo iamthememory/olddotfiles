@@ -15,6 +15,9 @@ call vundle#begin()
 " Let Vundle manage itself.
 Plugin 'VundleVim/Vundle.vim'
 
+" Dispatch (asynchronous command running).
+Plugin 'tpope/vim-dispatch'
+
 " Fugitive (git functionality).
 Plugin 'tpope/vim-fugitive'
 
