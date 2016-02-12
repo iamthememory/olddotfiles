@@ -15,6 +15,9 @@ call vundle#begin()
 " Let Vundle manage itself.
 Plugin 'VundleVim/Vundle.vim'
 
+" vim-rst-tables (reformat reStructuredText tables).
+Plugin 'nvie/vim-rst-tables'
+
 " Dispatch (asynchronous command running).
 Plugin 'tpope/vim-dispatch'
 
