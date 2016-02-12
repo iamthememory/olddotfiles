@@ -61,5 +61,24 @@ start-pulseaudio-x11 &
 # NetworkManager applet.
 dbus-launch nm-applet &
 
+# Skype login.
+if [ -e "$HOME/.skypelogins" ]
+then
+  (
+    cat ~/.skypelogins | (
+      while read login
+      do
+        (
+          (
+            echo -ne "$login "
+            pass show "skype.com/$login"
+          ) | \
+            dbus-launch skype --secondary --pipelogin
+        ) &
+      done
+    )
+  )
+fi
+
 # Blueman applet.
 blueman-applet &
