@@ -24,6 +24,9 @@ if find_executable 'chsh'
   end
 end
 
+# Install vim-rst-tables dependency.
+sh "pip install vim_bridge"
+
 # Add Vundle.
 unless Dir.exists?(File.expand_path('~/.vim/bundle/Vundle.vim'))
   sh "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
