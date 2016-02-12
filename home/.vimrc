@@ -15,6 +15,9 @@ call vundle#begin()
 " Let Vundle manage itself.
 Plugin 'VundleVim/Vundle.vim'
 
+" EditorConfig (automatic per-project editor settings).
+Plugin 'editorconfig/editorconfig-vim'
+
 " vim-rst-tables (reformat reStructuredText tables).
 Plugin 'nvie/vim-rst-tables'
 
@@ -27,7 +30,7 @@ Plugin 'tpope/vim-fugitive'
 " Obsession (auto-saving sessions).
 Plugin 'tpope/vim-obsession'
 
-" VST (reStructuredText)
+" VST (reStructuredText).
 Plugin 'VST'
 
 
