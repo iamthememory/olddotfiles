@@ -25,7 +25,7 @@ if find_executable 'chsh'
 end
 
 # Install vim-rst-tables dependency.
-sh "pip install vim_bridge"
+sh "pip install --user vim_bridge"
 
 # Add Vundle.
 unless Dir.exists?(File.expand_path('~/.vim/bundle/Vundle.vim'))
