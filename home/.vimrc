@@ -58,6 +58,9 @@ set foldlevel=2
 " Show line numbers by default.
 set number
 
+" Enable syntax highlighting.
+syntax on
+
 " Statusline.
 if has('statusline')
 	set laststatus=2
