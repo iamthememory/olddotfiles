@@ -39,7 +39,7 @@ set $right l
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec "$TERMINAL zsh"
+bindsym Mod1+Return exec "$TERMINAL -e zsh"
 
 # blank the screen
 bindsym --release Mod1+Control+Shift+s exec "xset dpms force off"
@@ -205,10 +205,10 @@ bindsym Mod1+Shift+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 bindsym Mod1+Control+Shift+p exec "pavucontrol"
 
 # Open alsamixer in a terminal.
-bindsym Mod1+Control+Shift+a exec "$TERMINAL alsamixer -c 0"
+bindsym Mod1+Control+Shift+a exec "$TERMINAL -e 'alsamixer -c 0'"
 
 # Open htop in a terminal.
-bindsym Mod1+Control+Shift+h exec "$TERMINAL htop"
+bindsym Mod1+Control+Shift+h exec "$TERMINAL -e 'htop'"
 
 # Take a screenshot of the window
 bindsym Mod1+Shift+s exec "scrot -b -u -e 'pngcrush -brute -l 9 -reduce $f $f.crush.png && mv $f.crush.png $f' $(mktemp /home/iamthememory/tmp/scrot/tmp.XXXX.png)"
