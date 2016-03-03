@@ -6,6 +6,23 @@ export GNOME_KEYRING_SOCKET
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
 
+# Set the default terminal.
+for termcandidate in st stterm gnome-terminal
+do
+  if command -v "$termcandidate" >/dev/null 2>&1
+  then
+    TERMINAL="$(which "$termcandidate")"
+    break
+  fi
+done
+
+unset termcandidate
+
+if [ -z ${TERMINAL+x} ]
+then
+  export TERMINAL
+fi
+
 # Activate Compose key
 setxkbmap -model evdev -layout us -option compose:lwin
 
