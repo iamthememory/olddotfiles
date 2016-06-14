@@ -4,6 +4,6 @@
 case "$1" in
 	rebase) 
 		# Run post-merge hook
-		.git/hooks/post-merge
+		#.git/hooks/post-merge
 		;;
 esac

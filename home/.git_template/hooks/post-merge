@@ -3,4 +3,4 @@
 # Git post-commit hook
 
 # Rebuild ctags database in the background
-.git/hooks/buildctags.sh >/dev/null 2>&1 &
+#.git/hooks/buildctags.sh >/dev/null 2>&1 &
