@@ -44,7 +44,6 @@ antigen bundle pass
 antigen bundle sudo
 antigen bundle taskwarrior
 antigen bundle web-search
-antigen bundle autojump
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle nojhan/liquidprompt
 antigen bundle iamthememory/homesick-zsh-completion
