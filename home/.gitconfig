@@ -26,3 +26,5 @@
 	diskreserve = 1 GiB
 [credential]
 	helper = store
+[diff "oodiff"]
+	textconv = odt2txt
