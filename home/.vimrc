@@ -108,3 +108,6 @@ au BufRead,BufNewFile *.c set filetype=c.doxygen
 au BufRead,BufNewFile *.cpp set filetype=cpp.doxygen
 au BufRead,BufNewFile *.h set filetype=cpp.doxygen
 au BufRead,BufNewFile *.h.in set filetype=cpp.doxygen
+
+" Assume LaTeX format for TeX files
+let g:tex_flavor='latex'
