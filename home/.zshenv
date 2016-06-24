@@ -51,10 +51,10 @@ export TEXMFHOME="${HOME}/texmf"
 export WINEARCH="win32"
 
 # Use i3 as the window manager (if it exists).
-if [ -e "/etc/X11/Sessions/i3wm" ]
-then
-  export XSESSION="i3wm"
-fi
+#if [ -e "/etc/X11/Sessions/i3wm" ]
+#then
+#  export XSESSION="i3wm"
+#fi
 
 # Proxy git through tor (if possible).
 if [ -e "${HOME}/.local/bin/tor-socks-proxy.sh" ]
@@ -63,12 +63,12 @@ then
 fi
 
 # Load the ssh and gpg agent variables from keychain.
-if [ -e "${HOME}/.keychain/load-keychain" ]
-then
-  [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
-  [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && source "${HOME}/.keychain/${HOSTNAME}-sh"
-  [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && source "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
-fi
+#if [ -e "${HOME}/.keychain/load-keychain" ]
+#then
+#  [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
+#  [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && source "${HOME}/.keychain/${HOSTNAME}-sh"
+#  [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && source "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
+#fi
 
 
 # Set the PATH-like variables.

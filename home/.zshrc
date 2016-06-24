@@ -7,6 +7,18 @@
 # (We don't add duplicates in it anyway.)
 source "${HOME}/.zshenv"
 
+# On Arch, tell which package a missing command is in.
+if [ -e "/usr/share/doc/pkgfile/command-not-found.zsh" ]
+then
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+# Load homeshick.
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+fpath=("$HOME/.homesick/repos/homeshick/completions" $fpath)
+
+# Update homeshick dotfiles.
+homeshick refresh 2
 
 # Load the completion scripts.
 autoload -U compinit promptinit
@@ -26,9 +38,10 @@ alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias grep='grep --colour=auto'
 alias ls='ls --color=auto'
+alias cp='cp --reflink=auto'
 
 # Load antigen.
-source ~/.antigenrepo/antigen.zsh
+source ~/.homesick/repos/antigen/antigen.zsh
 
 # Load antigen stuff.
 antigen use oh-my-zsh
@@ -46,31 +59,9 @@ antigen bundle taskwarrior
 antigen bundle web-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle nojhan/liquidprompt
-antigen bundle iamthememory/homesick-zsh-completion
 antigen apply
 
 # Automatically read the ansible vault password.
-alias ansible-playbook='ansible-playbook --vault-password-file ~/.ansible.vaultpass.sh'
-alias ansible='ansible --vault-password-file ~/.ansible.vaultpass.sh'
-
-# Use keychain to load ssh and GPG keys.
-if [ -e "${HOME}/.keychain/load-keychain" ]
-then
-  (
-    echo ~/.ssh/*id_rsa
-    if command -v gpg >/dev/null 2>&1
-    then
-      gpg --list-secret-keys --with-colons |
-        grep '^sec' |
-        cut -d : -f 5 |
-        sed 's/^.*$/0x&/'
-    fi
-  ) |
-    xargs keychain --agents ssh,gpg
-  [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
-  [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && source "${HOME}/.keychain/${HOSTNAME}-sh"
-  [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && source "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
-fi
 
 unsetopt autopushd
 
@@ -79,9 +70,3 @@ export EXTENDED_HISTORY=1
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export SHARE_HISTORY=1
-
-# Fortune quote.
-if command -v fortune >/dev/null 2>&1
-then
-  fortune
-fi
